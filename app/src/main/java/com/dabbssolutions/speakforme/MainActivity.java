@@ -23,15 +23,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String[] data= {"all","angry","bored","bad","bye","go for a walk"};
+        String[] data= {"Activities","Chat","Colors","Core Basics","Feelings","Food and Drinks","Numbers","Places"
+                ,"Shapes","Toys","who"};
         GridView lv=(GridView) findViewById(R.id.imageView);
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
                 if(status != TextToSpeech.ERROR) {
-                    t1.setLanguage(new Locale("hin", "IND"));
+                    t1.setLanguage(Locale.UK);
 
                 }
+  
             }
         });
         try {

@@ -51,7 +51,7 @@ public class imagesAdapter extends BaseAdapter {
         String img=images[i];
 
         try {
-            InputStream imageStream = context.getAssets().open(img+".jpeg");
+            InputStream imageStream = context.getAssets().open(img+".jpg");
             // load image as Drawable
             Drawable drawable = Drawable.createFromStream(imageStream, null);
             // set image to ImageView
