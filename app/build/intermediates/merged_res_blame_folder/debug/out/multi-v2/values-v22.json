@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v22/values-v22.xml",
+            "map": [
+                {
+                    "source": "/home/wali/.gradle/caches/transforms-2/files-2.1/408e26a9db0cd6910a69c9d5990ae58b/appcompat-1.6.1/res/values-v22/values-v22.xml",
+                    "from": {
+                        "startLines": "2,3,4,9",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,130,217,487",
+                        "endLines": "2,3,8,13",
+                        "endColumns": "74,86,12,12",
+                        "endOffsets": "125,212,482,764"
+                    }
+                }
+            ]
+        }
+    ]
+}
