@@ -83,6 +83,14 @@ public class imagesAdapter extends BaseAdapter {
                     } else {
                         MainActivity.t1.speak(imgv.getTag().toString(), TextToSpeech.QUEUE_FLUSH, null);
                     }
+                    if(img.isSentence()){
+                        ImageView imgs=new ImageView(context);
+                        imgs.setTag(img.getImageName());
+                        imgs.setImageDrawable(drawable);
+                        MainActivity.images.addView(imgs);
+                        MainActivity.imageviews.add(imgs);
+                    }
+
                     if(img.isSentence()==false){
                         try {
                             String[] s = context.getAssets().list(img.getImageName());

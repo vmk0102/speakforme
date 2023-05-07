@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -33,9 +34,11 @@ public class MainActivity extends AppCompatActivity {
     static ArrayList<speeches> data;
     static GridView lv;
     static EditText et;
+    static LinearLayout images;
     ImageView btnSpeak;
     ImageView btnReset;
     ImageView btnBack;
+    static ArrayList<ImageView> imageviews;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
         btnSpeak=(ImageView) findViewById(R.id.SpeakOut);
         btnReset=(ImageView) findViewById(R.id.reset);
         btnBack=(ImageView)findViewById(R.id.btnBack);
-
+        images=(LinearLayout)findViewById(R.id.images);
+        imageviews=new ArrayList<>();
 
         // TODO: Remove the redundant calls to getSupportActionBar()
         //       and use variable actionBar instead
@@ -56,22 +60,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                List<String> s = Arrays.asList(et.getText().toString().split(" "));
 
-                et.setText("");
-                for(int i=0;i<=s.size()-2;i++){
-                    et.setText(et.getText().toString()+" "+s.get(i));
-                }
+                imageviews.remove(imageviews.size()-1);
+                images.removeViewAt(images.getChildCount()-1);
 
             }
         });
         btnSpeak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String s="";
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    MainActivity.t1.speak(et.getText().toString(),TextToSpeech.QUEUE_FLUSH,null,null);
+                    for(ImageView i:imageviews){
+                        s=s+" "+i.getTag().toString();
+                    }
+                    MainActivity.t1.speak(s,TextToSpeech.QUEUE_FLUSH,null,null);
                 } else {
-                    MainActivity.t1.speak(et.getText().toString(), TextToSpeech.QUEUE_FLUSH, null);
+                    for(ImageView i:imageviews){
+                        s=s+" "+i.getTag().toString();
+                    }
+                    MainActivity.t1.speak(s, TextToSpeech.QUEUE_FLUSH, null);
                 }
             }
         });
@@ -130,5 +138,11 @@ public class MainActivity extends AppCompatActivity {
         data.add(new speeches("Who",false));
         imagesAdapter ia=new imagesAdapter(MainActivity.this,data);
         lv.setAdapter(ia);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        fillist();
     }
 }

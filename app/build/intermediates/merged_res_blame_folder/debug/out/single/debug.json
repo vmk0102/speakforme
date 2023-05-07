@@ -44,8 +44,8 @@
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/logo.png"
     },
     {
-        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable-v24_play.jpeg.flat",
-        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/play.jpeg"
+        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable-v24_backspace.png.flat",
+        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/backspace.png"
     },
     {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable_ic_launcher_background.xml.flat",
@@ -56,12 +56,12 @@
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/layout/splash.xml"
     },
     {
-        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
+        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable-v24_play.png.flat",
+        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/play.png"
     },
     {
-        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable-v24_backspace.jpeg.flat",
-        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/backspace.jpeg"
+        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/ic_launcher_foreground.xml"
     },
     {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/debug/layout_imagelayout.xml.flat",
