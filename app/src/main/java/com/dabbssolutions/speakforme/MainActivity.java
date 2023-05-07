@@ -1,5 +1,7 @@
 package com.dabbssolutions.speakforme;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -9,6 +11,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -21,6 +25,7 @@ import android.widget.Toast;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,31 +35,34 @@ public class MainActivity extends AppCompatActivity {
     static EditText et;
     ImageView btnSpeak;
     ImageView btnReset;
+    ImageView btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        data=new ArrayList<>();
-        data.add(new speeches("Sentence Starters",false));
-        data.add(new speeches("Activities",false));
-        data.add(new speeches("Chat",false));
-        data.add(new speeches("Colors",false));
-        data.add(new speeches("Core Basics",false));
-        data.add(new speeches("Feelings",false));
-        data.add(new speeches("Food and Drinks",false));
-        data.add(new speeches("Numbers",false));
-        data.add(new speeches("Places",false));
-        data.add(new speeches("Shapes",false));
-        data.add(new speeches("Toys",false));
-        data.add(new speeches("who",false));
+
         lv=(GridView) findViewById(R.id.imageView);
         et=(EditText)findViewById(R.id.sentence);
+        fillist();
         btnSpeak=(ImageView) findViewById(R.id.SpeakOut);
         btnReset=(ImageView) findViewById(R.id.reset);
+        btnBack=(ImageView)findViewById(R.id.btnBack);
+
+
+        // TODO: Remove the redundant calls to getSupportActionBar()
+        //       and use variable actionBar instead
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                List<String> s = Arrays.asList(et.getText().toString().split(" "));
+
                 et.setText("");
+                for(int i=0;i<=s.size()-2;i++){
+                    et.setText(et.getText().toString()+" "+s.get(i));
+                }
+
             }
         });
         btnSpeak.setOnClickListener(new View.OnClickListener() {
@@ -67,9 +75,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fillist();
+            }
+        });
 
-        imagesAdapter ia=new imagesAdapter(MainActivity.this,data);
-        lv.setAdapter(ia);
+
 
         t1=new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
             @Override
@@ -90,5 +103,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        fillist();
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void fillist(){
+        data=new ArrayList<>();
+        data.add(new speeches("Sentence Starters",false));
+        data.add(new speeches("Activities",false));
+        data.add(new speeches("Chat",false));
+        data.add(new speeches("Colors",false));
+        data.add(new speeches("Core Basics",false));
+        data.add(new speeches("Feelings",false));
+        data.add(new speeches("Food and Drinks",false));
+        data.add(new speeches("Numbers",false));
+        data.add(new speeches("Places",false));
+        data.add(new speeches("Shapes",false));
+        data.add(new speeches("Toys",false));
+        data.add(new speeches("Who",false));
+        imagesAdapter ia=new imagesAdapter(MainActivity.this,data);
+        lv.setAdapter(ia);
+    }
 }

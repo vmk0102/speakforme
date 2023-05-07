@@ -12,40 +12,62 @@
         android:id="@+id/speakTracker"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:background="@android:color/white"
 
         >
         <EditText
+
             android:id="@+id/sentence"
-            android:layout_width="300dp"
+            android:enabled="false"
+            android:layout_width="280dp"
             android:layout_height="match_parent"
             android:background="@color/white"
             android:textColor="@color/black"
             />
 
         <ImageView
+            android:layout_marginTop="5dp"
             android:clickable="true"
-            android:src="@android:drawable/ic_media_play"
+            android:src="@drawable/play"
             android:id="@+id/SpeakOut"
+            android:layout_marginLeft="10dp"
             android:layout_width="50dp"
             android:layout_height="50dp" />
         <ImageView
             android:clickable="true"
-            android:src="@android:drawable/ic_menu_rotate"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/backspace"
             android:id="@+id/reset"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <ImageView
+            android:visibility="gone"
+            android:clickable="true"
+            android:src="@android:drawable/btn_minus"
+            android:id="@+id/btnBack"
             android:layout_width="50dp"
             android:layout_height="50dp" />
 
     </LinearLayout>
     <GridView
         android:layout_below="@id/speakTracker"
-
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent"
+        android:layout_height="450dp"
 
         android:numColumns="3"/>
 
         />
+    <ListView
+
+        android:layout_below="@id/imageView"
+        android:id="@+id/listForSentence"
+        android:layout_width="fill_parent"
+        android:layout_height="250dp"
+
+        />
+
+    />
 </RelativeLayout>

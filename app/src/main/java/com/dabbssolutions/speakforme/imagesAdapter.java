@@ -1,6 +1,8 @@
+
 package com.dabbssolutions.speakforme;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
@@ -55,15 +57,14 @@ public class imagesAdapter extends BaseAdapter {
         speeches img=(speeches) getItem(i);
         InputStream imageStream;
         try {
-            String s="";
+
             if(img.isSentence()==false) {
-                s=img.getImageName();
                 imageStream= context.getAssets().open(img.getImageName() + ".jpg");
             }else{
-                Toast.makeText(context,s+"/"+img.getImageName()+".jpeg" , Toast.LENGTH_SHORT).show();
-                imageStream=context.getAssets().open(s+"/"+img.getImageName()+".jpeg");
+                SharedPreferences sf = context.getSharedPreferences("mypref",Context.MODE_PRIVATE);
+                String path=sf.getString("path","");
+                imageStream=context.getAssets().open(path+"/"+img.getImageName()+".jpeg");
             }
-
             // load image as Drawable
             Drawable drawable = Drawable.createFromStream(imageStream, null);
             // set image to ImageView
@@ -73,7 +74,10 @@ public class imagesAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
 
-
+                    if(img.isSentence()==false) {
+                        SharedPreferences sf = context.getSharedPreferences("mypref", Context.MODE_PRIVATE);
+                        sf.edit().putString("path", img.getImageName()).apply();
+                    }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         MainActivity.t1.speak(imgv.getTag().toString(),TextToSpeech.QUEUE_FLUSH,null,null);
                     } else {
@@ -93,6 +97,9 @@ public class imagesAdapter extends BaseAdapter {
                         }catch (Exception e){
 
                         }
+                    }
+                    else{
+                        MainActivity.et.setText(MainActivity.et.getText()+" "+img.getImageName());
                     }
                 }
 
