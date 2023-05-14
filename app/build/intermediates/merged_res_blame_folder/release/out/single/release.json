@@ -4,20 +4,16 @@
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/drawable-v24_backspace.png.flat",
-        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/backspace.png"
-    },
-    {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/layout_imagelayout.xml.flat",
-        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/layout/imagelayout.xml"
-    },
-    {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/drawable-v24_play.png.flat",
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/play.png"
+    },
+    {
+        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/layout_imagelayout.xml.flat",
+        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/layout/imagelayout.xml"
     },
     {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/mipmap-hdpi_ic_launcher.png.flat",
@@ -68,8 +64,16 @@
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
+        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/drawable_roundborder.xml.flat",
+        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable/roundborder.xml"
+    },
+    {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/drawable_ic_launcher_background.xml.flat",
         "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/drawable-v24_backspaces.png.flat",
+        "source": "/home/Data/AndroidStudioProjects/SpeakForMe/app/src/main/res/drawable-v24/backspaces.png"
     },
     {
         "merged": "/home/Data/AndroidStudioProjects/SpeakForMe/app/build/intermediates/res/merged/release/mipmap-mdpi_ic_launcher.png.flat",

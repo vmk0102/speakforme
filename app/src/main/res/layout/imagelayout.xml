@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
+    android:background="@drawable/roundborder"
+    android:id="@+id/activityLayout"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-
+        android:layout_gravity="center"
         android:id="@+id/myImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
 
         />
-</RelativeLayout>
+    <TextView
+        android:layout_gravity="center"
+        android:id="@+id/txtActivity"
+        android:layout_marginTop="10dp"
+        android:layout_width="140dp"
+        android:textSize="18sp"
+        android:text="anc/123"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:inputType="textCapSentences"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

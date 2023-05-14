@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
@@ -59,11 +61,10 @@ public class MainActivity extends AppCompatActivity {
         btnReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                imageviews.remove(imageviews.size()-1);
-                images.removeViewAt(images.getChildCount()-1);
-
+                if(imageviews.size()>0 && images.getChildCount()>0) {
+                    imageviews.remove(imageviews.size() - 1);
+                    images.removeViewAt(images.getChildCount() - 1);
+                }
             }
         });
         btnSpeak.setOnClickListener(new View.OnClickListener() {
@@ -139,10 +140,26 @@ public class MainActivity extends AppCompatActivity {
         imagesAdapter ia=new imagesAdapter(MainActivity.this,data);
         lv.setAdapter(ia);
     }
-
+    boolean doubleBackToExitPressedOnce=false;
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         fillist();
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+
+
     }
 }

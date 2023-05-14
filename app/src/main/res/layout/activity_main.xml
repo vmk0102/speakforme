@@ -10,14 +10,17 @@
 
 
     <GridView
-
+        android:layout_marginLeft="60dp"
+android:layout_centerHorizontal="true"
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
-        android:layout_height="450dp"
-
-        android:numColumns="3"/>
+        android:layout_height="480dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
+        android:numColumns="2"/>
 
         />
+
     <LinearLayout
         android:layout_below="@id/imageView"
         android:id="@+id/speakTracker"
@@ -52,7 +55,7 @@
             android:clickable="true"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:src="@drawable/backspace"
+            android:src="@drawable/backspaces"
             android:id="@+id/reset"
             android:layout_width="50dp"
             android:layout_height="50dp" />
@@ -82,4 +85,5 @@
     </HorizontalScrollView>
 
     />
+
 </RelativeLayout>

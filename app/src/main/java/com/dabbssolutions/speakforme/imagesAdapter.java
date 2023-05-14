@@ -3,14 +3,21 @@ package com.dabbssolutions.speakforme;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.speech.tts.TextToSpeech;
+import android.text.InputType;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.InputStream;
@@ -53,13 +60,16 @@ public class imagesAdapter extends BaseAdapter {
         if(view==null){
             view= LayoutInflater.from(context).inflate(R.layout.imagelayout,viewGroup,false);
         }
+        LinearLayout ll=(LinearLayout)view.findViewById(R.id.activityLayout);
         ImageView imgv=(ImageView)view.findViewById(R.id.myImage);
+        TextView tv= (TextView)view.findViewById(R.id.txtActivity);
         speeches img=(speeches) getItem(i);
         InputStream imageStream;
         try {
 
             if(img.isSentence()==false) {
                 imageStream= context.getAssets().open(img.getImageName() + ".jpg");
+                
             }else{
                 SharedPreferences sf = context.getSharedPreferences("mypref",Context.MODE_PRIVATE);
                 String path=sf.getString("path","");
@@ -70,7 +80,18 @@ public class imagesAdapter extends BaseAdapter {
             // set image to ImageView
             imgv.setImageDrawable(drawable);
             imgv.setTag(img.getImageName());
-            imgv.setOnClickListener(new View.OnClickListener() {
+            char firstLetter = img.getImageName().charAt(0);
+            String firstLetterCap = String.valueOf(firstLetter).toUpperCase();
+            String remainingLetters = img.getImageName().substring(1,img.getImageName().length());
+            SpannableString st = new SpannableString(firstLetterCap+remainingLetters);
+            img.setImageName(firstLetterCap+remainingLetters);
+            st.setSpan(new UnderlineSpan(), 0, 1, 0);
+
+            tv.setText(st);
+            tv.setInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES);
+
+
+            ll.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
@@ -84,10 +105,21 @@ public class imagesAdapter extends BaseAdapter {
                         MainActivity.t1.speak(imgv.getTag().toString(), TextToSpeech.QUEUE_FLUSH, null);
                     }
                     if(img.isSentence()){
+                        LinearLayout ll = new LinearLayout(context);
+                        ll.setOrientation(LinearLayout.VERTICAL);
+                        TextView tv = new TextView(context);
+                        tv.setWidth(150);
+                        tv.setTextSize(18);
+                        tv.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+                        tv.setText(img.getImageName());
+                        tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
                         ImageView imgs=new ImageView(context);
                         imgs.setTag(img.getImageName());
                         imgs.setImageDrawable(drawable);
-                        MainActivity.images.addView(imgs);
+                        ll.addView(imgs);
+                        ll.addView(tv);
+                        MainActivity.images.addView(ll);
                         MainActivity.imageviews.add(imgs);
                     }
 

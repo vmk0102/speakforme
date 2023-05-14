@@ -401,6 +401,56 @@ library {
     sha256: "\035\\\17715\241\273\246a\3747?\327.\021\353\nJ\333\2639g\207\202m\330\344\031\r]\236\335"
   }
 }
+library {
+  maven_library {
+    groupId: "com.github.skydoves"
+    artifactId: "expandablelayout"
+    version: "1.0.7"
+  }
+  digests {
+    sha256: "\220\353$\277TMv\332\352a!a\002 \342!\035\232y\352ob\f\207\317P {:\206\037q"
+  }
+}
+library {
+  maven_library {
+    groupId: "androidx.databinding"
+    artifactId: "viewbinding"
+    version: "4.1.3"
+  }
+  digests {
+    sha256: "\207\204$\\\240*\316w\354\267:\314J\257\2418\247\205)-\265\023\r\337\257r\354\376=X}\342"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.jetbrains.kotlin"
+    artifactId: "kotlin-stdlib"
+    version: "1.4.32"
+  }
+  digests {
+    sha256: "\023\351\375>i\334r0\316\017\310s\251*N]R\035\027\233\317\033\357u\246p[\252\303\277\354\272"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.jetbrains.kotlin"
+    artifactId: "kotlin-stdlib-common"
+    version: "1.4.32"
+  }
+  digests {
+    sha256: "\341\377oU\356\236u\221\334\3063\367u{\254%\247\355\261\314\177s\2137\354e/\020\366jAE"
+  }
+}
+library {
+  maven_library {
+    groupId: "org.jetbrains"
+    artifactId: "annotations"
+    version: "13.0"
+  }
+  digests {
+    sha256: "\254\342\241\r\310\342\325\3754\222^\312\300>I\210\262\300\370Qe\f\224\270\316\364\233\241\275\021\024x"
+  }
+}
 library_dependencies {
   library_dep_index: 1
   library_dep_index: 2
@@ -642,9 +692,25 @@ library_dependencies {
   library_dep_index: 2
   library_dep_index: 9
 }
+library_dependencies {
+  library_index: 40
+  library_dep_index: 41
+  library_dep_index: 42
+  library_dep_index: 0
+}
+library_dependencies {
+  library_index: 41
+  library_dep_index: 1
+}
+library_dependencies {
+  library_index: 42
+  library_dep_index: 43
+  library_dep_index: 44
+}
 module_dependencies {
   module_name: "base"
   dependency_index: 0
+  dependency_index: 40
   dependency_index: 27
   dependency_index: 30
 }
