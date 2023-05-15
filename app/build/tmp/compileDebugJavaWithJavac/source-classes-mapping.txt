@@ -2,6 +2,8 @@ com/dabbssolutions/speakforme/speeches.java
  com.dabbssolutions.speakforme.speeches
 com/dabbssolutions/speakforme/BuildConfig.java
  com.dabbssolutions.speakforme.BuildConfig
+com/dabbssolutions/speakforme/AudioRecorder.java
+ com.dabbssolutions.speakforme.AudioRecorder
 com/dabbssolutions/speakforme/Splash.java
  com.dabbssolutions.speakforme.Splash
  com.dabbssolutions.speakforme.Splash$1
@@ -12,6 +14,7 @@ com/dabbssolutions/speakforme/MainActivity.java
  com.dabbssolutions.speakforme.MainActivity$3
  com.dabbssolutions.speakforme.MainActivity$4
  com.dabbssolutions.speakforme.MainActivity$5
+ com.dabbssolutions.speakforme.MainActivity$6
 com/dabbssolutions/speakforme/imagesAdapter.java
  com.dabbssolutions.speakforme.imagesAdapter
  com.dabbssolutions.speakforme.imagesAdapter$1

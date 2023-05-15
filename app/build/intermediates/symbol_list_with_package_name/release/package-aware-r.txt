@@ -1839,6 +1839,7 @@ drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable play
+drawable record
 drawable roundborder
 drawable test_custom_background
 drawable tooltip_frame_dark
@@ -2175,12 +2176,14 @@ id pathRelative
 id peekHeight
 id percent
 id pin
+id play
 id position
 id postLayout
 id progress_circular
 id progress_horizontal
 id radio
 id ratio
+id record
 id rectangles
 id reset
 id reverseSawtooth
@@ -2482,6 +2485,7 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -2832,6 +2836,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style Permissions_TransparentTheme
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

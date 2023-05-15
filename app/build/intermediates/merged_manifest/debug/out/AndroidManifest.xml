@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_MEDIA" />
 
     <queries>
         <intent>
@@ -25,6 +28,8 @@
         android:extractNativeLibs="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:preserveLegacyExternalStorage="true"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:testOnly="true"
@@ -38,7 +43,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.dabbssolutions.speakforme.MainActivity" />
+        <activity android:name="com.dabbssolutions.speakforme.MainActivity" >
+        </activity>
+        <activity
+            android:name="com.nabinbhandari.android.permissions.PermissionsActivity"
+            android:theme="@style/Permissions.TransparentTheme" />
     </application>
 
 </manifest>

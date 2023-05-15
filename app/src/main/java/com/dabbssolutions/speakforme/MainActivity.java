@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Build;
@@ -14,6 +15,7 @@ import android.os.Looper;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,6 +26,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.nabinbhandari.android.permissions.PermissionHandler;
+import com.nabinbhandari.android.permissions.Permissions;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -40,7 +45,11 @@ public class MainActivity extends AppCompatActivity {
     ImageView btnSpeak;
     ImageView btnReset;
     ImageView btnBack;
+    static boolean recording=false;
+    static  MenuItem records;
+    static  MenuItem stoprecords;
     static ArrayList<ImageView> imageviews;
+    static AudioRecorder ad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +62,9 @@ public class MainActivity extends AppCompatActivity {
         btnReset=(ImageView) findViewById(R.id.reset);
         btnBack=(ImageView)findViewById(R.id.btnBack);
         images=(LinearLayout)findViewById(R.id.images);
+        ad=new AudioRecorder("sound.3gp",MainActivity.this);
         imageviews=new ArrayList<>();
+       // checkPermissions();
 
         // TODO: Remove the redundant calls to getSupportActionBar()
         //       and use variable actionBar instead
@@ -114,12 +125,59 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        return super.onCreateOptionsMenu(menu);
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.menu, menu);
+        records=menu.getItem(0);
+        stoprecords=menu.getItem(1);
+
+        return true;
+
+
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        fillist();
+        if(item.getItemId()==R.id.record) {
+            if (recording == false) {
+                Toast.makeText(this, "Recording Started, You May Speak Now", Toast.LENGTH_SHORT).show();
+                recording = true;
+
+                try {
+                    ad.start();
+                    item.setVisible(false);
+                    stoprecords.setVisible(true);
+                } catch (Exception e) {
+                    Log.d("nahi horha record abay saalay", e.getMessage());
+                }
+            } else {
+
+            }
+        }
+            else if(item.getItemId()==R.id.Stoprecord){
+                Toast.makeText(this, "Recording Stopped", Toast.LENGTH_SHORT).show();
+                recording=false;
+
+                try {
+                    ad.stop();
+                    item.setVisible(false);
+                    records.setVisible(true);
+                }catch (Exception e){
+                    Log.d("nai horha stop abay saalay",e.getMessage());
+                }
+            }
+
+
+        else if(item.getItemId()==R.id.play){
+            try {
+                ad.playarcoding("sound.3gp");
+            }catch (Exception e){
+                Log.d("Naho horha play abay saalay",e.getMessage());
+            }
+        }
+        else{
+            fillist();
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -161,5 +219,16 @@ public class MainActivity extends AppCompatActivity {
         }, 2000);
 
 
+    }
+    public void checkPermissions(){
+        String[] permissions = {Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET,Manifest.permission.MANAGE_EXTERNAL_STORAGE,Manifest.permission.MANAGE_MEDIA};
+        Permissions.check(this/*context*/, permissions, null/*rationale*/, null/*options*/, new PermissionHandler() {
+            @Override
+            public void onGranted() {
+
+            }
+
+        });
     }
 }
