@@ -8,10 +8,13 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +33,7 @@ import android.widget.Toast;
 import com.nabinbhandari.android.permissions.PermissionHandler;
 import com.nabinbhandari.android.permissions.Permissions;
 
+import java.io.File;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -170,10 +174,38 @@ public class MainActivity extends AppCompatActivity {
 
         else if(item.getItemId()==R.id.play){
             try {
+
                 ad.playarcoding("sound.3gp");
+                item.setEnabled(false);
             }catch (Exception e){
                 Log.d("Naho horha play abay saalay",e.getMessage());
             }
+            final String adpath=ad.path;
+            MediaMetadataRetriever r = new MediaMetadataRetriever();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        File f = new File(adpath);
+                        r.setDataSource(getApplicationContext(), Uri.fromFile(f));
+                        String time = r.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+                        final long timeInMillisec = Long.parseLong(time);
+                        r.release();
+                        try {
+                            Thread.sleep(timeInMillisec);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    item.setEnabled(true);
+                                }
+                            });
+                        } catch (Exception e) {
+
+                        }
+                    }
+
+                }).start();
+
+
         }
         else{
             fillist();
@@ -195,8 +227,10 @@ public class MainActivity extends AppCompatActivity {
         data.add(new speeches("Shapes",false));
         data.add(new speeches("Toys",false));
         data.add(new speeches("Who",false));
+        data=imagesAdapter.removeDuplicates(data);
         imagesAdapter ia=new imagesAdapter(MainActivity.this,data);
         lv.setAdapter(ia);
+        lv.deferNotifyDataSetChanged();
     }
     boolean doubleBackToExitPressedOnce=false;
     @Override

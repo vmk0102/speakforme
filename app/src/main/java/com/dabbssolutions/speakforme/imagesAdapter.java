@@ -56,20 +56,20 @@ public class imagesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-
+       final LinearLayout ll=(LinearLayout)view.findViewById(R.id.activityLayout);
+        final ImageView imgv=(ImageView)view.findViewById(R.id.myImage);
+        final TextView tv= (TextView)view.findViewById(R.id.txtActivity);
+        final speeches img=(speeches) getItem(i);
+        final InputStream imageStream;
         if(view==null){
             view= LayoutInflater.from(context).inflate(R.layout.imagelayout,viewGroup,false);
-        }
-        LinearLayout ll=(LinearLayout)view.findViewById(R.id.activityLayout);
-        ImageView imgv=(ImageView)view.findViewById(R.id.myImage);
-        TextView tv= (TextView)view.findViewById(R.id.txtActivity);
-        speeches img=(speeches) getItem(i);
-        InputStream imageStream;
-        try {
 
+        }
+
+        try {
             if(img.isSentence()==false) {
                 imageStream= context.getAssets().open(img.getImageName() + ".jpg");
-                
+
             }else{
                 SharedPreferences sf = context.getSharedPreferences("mypref",Context.MODE_PRIVATE);
                 String path=sf.getString("path","");
@@ -127,9 +127,13 @@ public class imagesAdapter extends BaseAdapter {
                         try {
                             String[] s = context.getAssets().list(img.getImageName());
                             ArrayList<speeches> more=new ArrayList<>();
+                            more=removeDuplicates(more);
+
                             for(String a : s){
                                 more.add(new speeches(a.replace(".jpeg",""),true));
+                                more=removeDuplicates(more);
                                 imagesAdapter ia=new imagesAdapter(context,more);
+                                MainActivity.lv.setAdapter(null);
                                 MainActivity.lv.setAdapter(ia);
                                 MainActivity.lv.deferNotifyDataSetChanged();
 
@@ -154,5 +158,25 @@ public class imagesAdapter extends BaseAdapter {
         }
 
         return view;
+    }
+    public static  ArrayList<speeches> removeDuplicates(ArrayList<speeches> list)
+    {
+
+        // Create a new ArrayList
+        ArrayList<speeches> newList = new ArrayList<speeches>();
+
+        // Traverse through the first list
+        for (speeches element : list) {
+
+            // If this element is not present in newList
+            // then add it
+            if (!newList.contains(element)) {
+
+                newList.add(element);
+            }
+        }
+
+        // return the new list
+        return newList;
     }
 }

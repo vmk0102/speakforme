@@ -14,7 +14,9 @@ com/dabbssolutions/speakforme/MainActivity.java
  com.dabbssolutions.speakforme.MainActivity$3
  com.dabbssolutions.speakforme.MainActivity$4
  com.dabbssolutions.speakforme.MainActivity$5
+ com.dabbssolutions.speakforme.MainActivity$5$1
  com.dabbssolutions.speakforme.MainActivity$6
+ com.dabbssolutions.speakforme.MainActivity$7
 com/dabbssolutions/speakforme/imagesAdapter.java
  com.dabbssolutions.speakforme.imagesAdapter
  com.dabbssolutions.speakforme.imagesAdapter$1

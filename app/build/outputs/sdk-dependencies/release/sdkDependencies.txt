@@ -451,6 +451,16 @@ library {
     sha256: "\254\342\241\r\310\342\325\3754\222^\312\300>I\210\262\300\370Qe\f\224\270\316\364\233\241\275\021\024x"
   }
 }
+library {
+  maven_library {
+    groupId: "com.nabinbhandari.android"
+    artifactId: "permissions"
+    version: "3.8"
+  }
+  digests {
+    sha256: "\373\353\364(u<\271ZO\321{~\354\354\275\304\000w6\304&\241\260q\274P\313\\\243\331\207\301"
+  }
+}
 library_dependencies {
   library_dep_index: 1
   library_dep_index: 2
@@ -712,5 +722,6 @@ module_dependencies {
   dependency_index: 0
   dependency_index: 40
   dependency_index: 27
+  dependency_index: 45
   dependency_index: 30
 }
